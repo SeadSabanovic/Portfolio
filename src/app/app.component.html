@@ -1,0 +1,7 @@
+<app-navigation></app-navigation>
+
+<div [@routerFade]="getAnimationData(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
+
+<app-loader *ngIf="isLoading" @fade></app-loader>
