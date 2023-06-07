@@ -1,0 +1,66 @@
+:host {
+  .main-container {
+    height: 100%;
+    width: calc(100% - 80px);
+    border-right: 1px solid #474554;
+
+    &__drawer {
+      width: 50%;
+      background-color: darken(#323232, 10%);
+    }
+  }
+
+  .hamburger {
+    $hamburger: &;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      border-radius 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+
+    &:hover:not(&--active) {
+      background-color: rgba(#8685ef, 0.3);
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 40px;
+      height: 4px;
+      background-color: #faf8ff;
+      border-radius: 2px;
+      transform: translateX(-50%);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &::before {
+      top: 40%;
+    }
+
+    &::after {
+      bottom: 40%;
+    }
+
+    &--active {
+      background-color: rgba(#8685ef, 1);
+      border-radius: 0%;
+
+      &::before {
+        top: 50%;
+        transform: translateX(-50%);
+      }
+
+      &::after {
+        bottom: 50%;
+
+        opacity: 0;
+      }
+    }
+  }
+}
