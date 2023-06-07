@@ -1,24 +1,25 @@
-<!--  -->
-
 <mat-drawer-container class="main-container" hasBackdrop="false">
   <mat-drawer
     #drawer
     class="main-container__drawer"
     mode="push"
     hasBackdrop="true"
+    [autoFocus]="false"
   >
     <app-navigation></app-navigation>
   </mat-drawer>
-  <div [@routerFade]="getAnimationData(outlet)">
-    <router-outlet #outlet="outlet"></router-outlet>
-  </div>
-
-  <div
-    class="hamburger"
-    [ngClass]="{'hamburger--active': drawer.opened}"
-    (click)="drawer.toggle()"
-    @fade
-  ></div>
+  <mat-drawer-content class="content" [ngClass]="{ disabled: drawer.opened }">
+    <!-- Main content goes here -->
+    <div [@routerFade]="getAnimationData(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+  </mat-drawer-content>
 </mat-drawer-container>
+<div
+  class="hamburger"
+  [ngClass]="{ 'hamburger--active': drawer.opened }"
+  (click)="drawer.toggle()"
+  @fade
+></div>
 
 <app-loader *ngIf="isLoading" @fade></app-loader>

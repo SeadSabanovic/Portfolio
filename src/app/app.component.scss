@@ -5,8 +5,35 @@
     border-right: 1px solid #474554;
 
     &__drawer {
-      width: 50%;
-      background-color: darken(#323232, 10%);
+      padding: 24px;
+      width: 100%;
+      box-shadow: none;
+      border-right: 1px solid #474554;
+      background-color: #323232;
+
+      @media screen and (min-width: 600px) {
+        max-width: 300px;
+      }
+    }
+
+    .mat-drawer-content {
+      background-color: #323232;
+
+      &.disabled {
+        overflow: hidden;
+      }
+
+      &::-webkit-scrollbar {
+        width: 1px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #474554;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: red;
+      }
     }
   }
 
@@ -32,7 +59,7 @@
       position: absolute;
       left: 50%;
       width: 40px;
-      height: 4px;
+      height: 2px;
       background-color: #faf8ff;
       border-radius: 2px;
       transform: translateX(-50%);
@@ -48,7 +75,6 @@
     }
 
     &--active {
-      background-color: rgba(#8685ef, 1);
       border-radius: 0%;
 
       &::before {

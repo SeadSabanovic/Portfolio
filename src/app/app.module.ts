@@ -8,6 +8,11 @@ import { OverviewComponent } from './overview/overview.component';
 import { LoaderComponent } from './UI/loader/loader.component';
 import { NavigationComponent } from './UI/navigation/navigation.component';
 import { MaterialModule } from './modules/material.module';
+import { LandingComponent } from './home/landing/landing.component';
+import { AssetComponent } from './home/landing/asset/asset.component';
+import { SectionComponent } from './UI/section/section.component';
+import { AboutComponent } from './home/landing/about/about.component';
+import { MarqueeComponent } from './UI/marquee/marquee.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +21,11 @@ import { MaterialModule } from './modules/material.module';
     OverviewComponent,
     LoaderComponent,
     NavigationComponent,
+    LandingComponent,
+    AssetComponent,
+    SectionComponent,
+    AboutComponent,
+    MarqueeComponent,
   ],
   imports: [
     BrowserModule,
