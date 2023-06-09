@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-landing',
@@ -8,16 +9,96 @@ import { gsap } from 'gsap';
 })
 export class LandingComponent implements AfterViewInit {
   @ViewChild('sky', { static: false }) skyEl!: ElementRef;
-  fogDuration = 20;
-  fogEase = 'none';
-  fogClass = '.fog';
-  numberOfStars = 20;
+  numberOfStars = 40;
 
   constructor(private elRef: ElementRef) {}
 
   ngAfterViewInit() {
+    this.setParallax();
+
     this.injectStars();
     this.cloudsAnimation();
+  }
+
+  setParallax() {
+    gsap.registerPlugin(ScrollTrigger);
+    const mount1 = document.querySelector('.mountain--1');
+    const mount2 = document.querySelector('.mountain--2');
+    const divider = document.querySelector('.divider');
+    const houses = document.querySelectorAll('.house');
+    const headline = document.querySelectorAll('.headline');
+    const floor = document.querySelector('.floor');
+
+    // Floor
+    gsap.to(floor, {
+      y: '10px',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: this.skyEl.nativeElement,
+        start: 'center center',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
+
+    // Mountain 1
+    gsap.to(mount1, {
+      y: '20px',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: this.skyEl.nativeElement,
+        start: 'center center',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
+
+    // Mountain 2
+    gsap.to(mount2, {
+      y: '50px',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: this.skyEl.nativeElement,
+        start: 'center center',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
+
+    gsap.to(headline, {
+      top: '100%',
+      scale: 0.8,
+      rotate: 300,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: this.skyEl.nativeElement,
+        start: 'center center',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
+    gsap.to(divider, {
+      height: '40%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: this.skyEl.nativeElement,
+        start: 'center center',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
+    houses.forEach((house) => {
+      gsap.to(house, {
+        y: '20%',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: this.skyEl.nativeElement,
+          start: 'center center',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+    });
   }
 
   injectStars() {
@@ -47,40 +128,18 @@ export class LandingComponent implements AfterViewInit {
   }
 
   cloudsAnimation() {
-    const fogElements: NodeList = this.elRef.nativeElement.querySelectorAll(
-      this.fogClass
-    );
+    const fog = document.querySelectorAll('.fog');
+    fog.forEach((fogEl, i) => {
+      gsap.set(fogEl, {
+        left: `-${(i + 2) * 100}%`,
+      });
+    });
 
-    fogElements.forEach((element, i) => {
-      let fogTl = gsap.timeline({
-        repeat: -1,
-        defaults: {
-          ease: this.fogEase,
-        },
-      });
-      gsap.set(element, {
-        left: `${-i * 40}%`,
-      });
-      fogTl
-        .from(element, {
-          opacity: 0,
-        })
-        .to(element, {
-          duration: this.fogDuration,
-          left: '+=110%',
-        })
-        .to(element, {
-          duration: 0,
-          left: `-110%`,
-        })
-        .to(element, {
-          duration: this.fogDuration,
-          left: `${i * 40}%`,
-        })
-        .to(element, {
-          duration: this.fogDuration,
-          left: '+=110%',
-        });
+    gsap.to(fog, {
+      repeat: -1,
+      ease: 'none',
+      duration: 5,
+      left: '120%',
     });
   }
 

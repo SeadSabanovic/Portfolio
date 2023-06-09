@@ -37,7 +37,7 @@ export class MarqueeComponent implements OnInit, AfterViewInit {
 
   getHostWidth() {
     this.hostWidth = this.marqueeWrap.nativeElement.offsetWidth;
-    console.log(this.hostWidth);
+    // console.log(this.hostWidth);
   }
 
   animate() {
