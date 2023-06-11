@@ -1,5 +1,5 @@
 <div class="marquee-wrap" #marqueeWrap>
   <div class="marquee-item" *ngFor="let item of items" #marqueeItem>
-    <img [src]="item.src" [alt]="item.alt" class="marquee-item__img" />
+    {{ item }}
   </div>
 </div>

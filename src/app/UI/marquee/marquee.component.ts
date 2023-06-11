@@ -1,15 +1,12 @@
 import {
   AfterViewInit,
   Component,
-  Input,
   ElementRef,
   QueryList,
   ViewChildren,
   OnInit,
-  Renderer2,
   ViewChild,
 } from '@angular/core';
-import { MarqueeItem } from 'src/app/interfaces/marquee-item';
 import { gsap } from 'gsap';
 
 @Component({
@@ -20,14 +17,14 @@ import { gsap } from 'gsap';
 export class MarqueeComponent implements OnInit, AfterViewInit {
   @ViewChild('marqueeWrap') marqueeWrap: ElementRef;
   @ViewChildren('marqueeItem') marqueeItem: QueryList<ElementRef>;
-  @Input() items: MarqueeItem[] = [];
+  items: string[] = [];
   hostWidth: number;
+  totalWidth: number;
+  elWidth: number;
   animation: any;
 
-  constructor() {}
-
   ngOnInit() {
-    this.items = [...this.items];
+    for (let i = 0; i < 10; i++) this.items.push('OPEN TO WORK');
   }
 
   ngAfterViewInit() {
@@ -36,15 +33,20 @@ export class MarqueeComponent implements OnInit, AfterViewInit {
   }
 
   getHostWidth() {
+    const allElements = this.marqueeItem.length;
+    this.elWidth = this.marqueeItem.first.nativeElement.offsetWidth;
     this.hostWidth = this.marqueeWrap.nativeElement.offsetWidth;
-    // console.log(this.hostWidth);
+    this.totalWidth = this.elWidth * allElements;
   }
 
   animate() {
     this.animation = gsap.timeline();
     this.marqueeItem.forEach((itemRef: ElementRef, index: number) => {
       const item = itemRef.nativeElement;
-      const mod = gsap.utils.wrap(0, this.hostWidth);
+      const mod = gsap.utils.wrap(
+        -this.elWidth,
+        this.totalWidth - this.elWidth
+      );
 
       // Set the elements position
       gsap.set(item, {
@@ -54,12 +56,12 @@ export class MarqueeComponent implements OnInit, AfterViewInit {
       });
 
       gsap.to(item, {
-        x: `+=${this.hostWidth}`,
+        x: `+=${this.totalWidth}`,
         modifiers: {
           x: (x) => mod(parseFloat(x)) + 'px',
         },
         ease: 'none',
-        duration: 10,
+        duration: 40,
         repeat: -1,
         overwrite: 'auto',
         onComplete: () => gsap.set(item, { x: index * item.offsetWidth }), // Reset the x position on each repeat
