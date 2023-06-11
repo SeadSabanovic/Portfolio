@@ -1,0 +1,33 @@
+:host {
+  .introduction {
+    margin-top: 24px;
+
+    .mt {
+      margin-top: 48px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      font-size: 18px;
+      line-height: 1.3;
+
+      span {
+        color: #c2185b;
+        cursor: none;
+      }
+    }
+
+    .icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+
+      &__icon {
+        user-select: none;
+        height: 48px;
+      }
+    }
+  }
+}

@@ -15,7 +15,6 @@ export class LandingComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.setParallax();
-
     this.injectStars();
     this.cloudsAnimation();
   }
@@ -28,6 +27,26 @@ export class LandingComponent implements AfterViewInit {
     const houses = document.querySelectorAll('.house');
     const headline = document.querySelectorAll('.headline');
     const floor = document.querySelector('.floor');
+
+    // Headline Rotation
+    gsap.to(headline, {
+      rotate: 360,
+      duration: 20,
+      repeat: -1,
+      ease: 'none',
+    });
+
+    gsap.to(headline, {
+      top: '100%',
+      scale: 0.4,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: this.skyEl.nativeElement,
+        start: 'center center',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
 
     // Floor
     gsap.to(floor, {
@@ -65,18 +84,6 @@ export class LandingComponent implements AfterViewInit {
       },
     });
 
-    gsap.to(headline, {
-      top: '100%',
-      scale: 0.8,
-      rotate: 300,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: this.skyEl.nativeElement,
-        start: 'center center',
-        end: 'bottom top',
-        scrub: 1,
-      },
-    });
     gsap.to(divider, {
       height: '40%',
       ease: 'none',
@@ -87,6 +94,7 @@ export class LandingComponent implements AfterViewInit {
         scrub: 1,
       },
     });
+
     houses.forEach((house) => {
       gsap.to(house, {
         y: '20%',
@@ -138,7 +146,7 @@ export class LandingComponent implements AfterViewInit {
     gsap.to(fog, {
       repeat: -1,
       ease: 'none',
-      duration: 5,
+      duration: 15,
       left: '120%',
     });
   }
