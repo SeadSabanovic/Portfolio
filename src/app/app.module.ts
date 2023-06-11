@@ -12,6 +12,7 @@ import { LandingComponent } from './home/landing/landing.component';
 import { AssetComponent } from './home/landing/asset/asset.component';
 import { SectionComponent } from './UI/section/section.component';
 import { MarqueeComponent } from './UI/marquee/marquee.component';
+import { ProjectsComponent } from './home/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MarqueeComponent } from './UI/marquee/marquee.component';
     AssetComponent,
     SectionComponent,
     MarqueeComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

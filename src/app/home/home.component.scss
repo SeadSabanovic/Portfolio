@@ -1,21 +1,21 @@
 :host {
+  .mt {
+    margin-top: 48px;
+  }
+
+  p {
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: 1.3;
+
+    span {
+      color: #c2185b;
+      cursor: none;
+    }
+  }
+
   .introduction {
     margin-top: 24px;
-
-    .mt {
-      margin-top: 48px;
-    }
-
-    p {
-      margin-bottom: 16px;
-      font-size: 18px;
-      line-height: 1.3;
-
-      span {
-        color: #c2185b;
-        cursor: none;
-      }
-    }
 
     .icons {
       display: flex;
