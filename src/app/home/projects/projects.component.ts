@@ -1,16 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements AfterViewInit {
   projects = [
     {
       name: 'Yuh',
       src: 'assets/projects/yuh.png',
       link: 'https://www.yuh.com/en',
+    },
+    {
+      name: 'Coinpanion',
+      src: 'assets/projects/coinpanion.jpg',
+      link: 'https://en.coinpanion.com/',
     },
     {
       name: 'Black Moose Outposts',
@@ -49,7 +56,20 @@ export class ProjectsComponent implements OnInit {
     },
   ];
 
-  constructor() {}
-
-  ngOnInit() {}
+  ngAfterViewInit() {
+    gsap.registerPlugin(ScrollTrigger);
+    const projects = document.querySelectorAll('.projects__project');
+    gsap.from(projects, {
+      y: 50,
+      ease: 'Power.3',
+      autoAlpha: 0,
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: projects,
+        start: 'center bottom',
+        end: 'center center',
+        scrub: 2,
+      },
+    });
+  }
 }
