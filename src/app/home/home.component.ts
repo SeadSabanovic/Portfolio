@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { MarqueeItem } from '../interfaces/marquee-item';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -80,6 +80,8 @@ export class HomeComponent implements AfterViewInit {
     },
   ];
 
+  constructor(private ElementRef: ElementRef) {}
+
   ngAfterViewInit() {
     const skills = document.querySelectorAll('.skills .skills__skill');
     gsap.registerPlugin(ScrollTrigger);
@@ -95,5 +97,13 @@ export class HomeComponent implements AfterViewInit {
         scrub: 2,
       },
     });
+
+    setTimeout(() => {
+      gsap.to(this.ElementRef.nativeElement, {
+        opacity: 1,
+        ease: 'Circ.easeOut',
+        duration: 1.5,
+      });
+    }, 1000);
   }
 }

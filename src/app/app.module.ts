@@ -11,6 +11,7 @@ import { SectionComponent } from './UI/section/section.component';
 import { MarqueeComponent } from './UI/marquee/marquee.component';
 import { ProjectsComponent } from './home/projects/projects.component';
 import { MouseComponent } from './UI/mouse/mouse.component';
+import { MouseTrackingDirective } from './directives/mouseTracking.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MouseComponent } from './UI/mouse/mouse.component';
     MarqueeComponent,
     ProjectsComponent,
     MouseComponent,
+    MouseTrackingDirective,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,6 @@ import { MouseComponent } from './UI/mouse/mouse.component';
     BrowserAnimationsModule,
     MaterialModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

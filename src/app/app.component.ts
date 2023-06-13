@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { fade } from './animations/fade';
-import { routerFade } from './animations/router';
 import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [fade, routerFade],
 })
 export class AppComponent implements OnInit {
   titles = ['✋', 'SEAD SABANOVIC', 'PORTFOLIO', 'OPEN 2 WORK', '😇'];
@@ -35,9 +32,5 @@ export class AppComponent implements OnInit {
         this.currentIndex = 0;
       }
     }, 1000);
-  }
-
-  getAnimationData(outlet: RouterOutlet) {
-    return outlet.isActivated ? outlet.activatedRoute : '';
   }
 }

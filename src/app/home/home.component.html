@@ -4,10 +4,10 @@
     <h2 class="mt">INTRODUCTION</h2>
     <p class="body-1">
       Hello!
-      <span>Sead Sabanovic</span>, a developer who is excited about
-      transitioning back into the Angular world. 25 years of life and over 3
-      years of development experience, I bring a combination of skills, passion,
-      and a strong desire to excel.
+      <span mouseTracking>Sead Sabanovic</span>, a developer who is excited
+      about transitioning back into the Angular world. 25 years of life and over
+      3 years of development experience, I bring a combination of skills,
+      passion, and a strong desire to excel.
       <br />
       <br />
       Highly motivated; quick to learn and eager to prove myself by taking on
@@ -22,12 +22,16 @@
       <a
         href="https://www.linkedin.com/in/sead-sabanovic-90250a1a2/"
         target="_blank"
+        mouseTracking
         ><span>LinkedIn</span>
       </a>
       or
-      <a href="mailto:sead.sabanovic97@gmail.com"><span>Email</span> </a>.
+      <a href="mailto:sead.sabanovic97@gmail.com" mouseTracking>
+        <span>Email</span> </a
+      >.
     </p>
     <a
+      mouseTracking
       mat-fab
       extended
       color="primary"
@@ -49,10 +53,11 @@
         *ngFor="let skill of skills"
         [matTooltip]="skill.alt"
         matTooltipClass="tooltip--dark"
+        loading="lazy"
       />
     </div>
 
-    <h2 class="mt">BRANDS I'VE WORKED FOR</h2>
+    <h2 class="mt">SOME BRANDS I'VE WORKED FOR</h2>
 
     <div class="skills icons">
       <img
@@ -72,9 +77,9 @@
 <app-section [title]="'WORK'">
   <p class="body-1 mt">
     Please note that the portfolio displayed here represents only a portion of
-    my work. Due to non-disclosure agreements (<span>NDA</span>) with certain
-    clients and projects, I am unable to showcase the complete range of my
-    experience.
+    my work. Due to non-disclosure agreements (<span mouseTracking>NDA</span>)
+    with certain clients and projects, I am unable to showcase the complete
+    range of my experience.
   </p>
   <app-projects></app-projects>
 </app-section>

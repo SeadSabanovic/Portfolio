@@ -1,5 +1,11 @@
-import { AfterViewInit, Component, ElementRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostBinding,
+} from '@angular/core';
 import { gsap } from 'gsap';
+import { MouseService } from 'src/app/services/mouse.service';
 
 @Component({
   selector: 'app-mouse',
@@ -7,9 +13,10 @@ import { gsap } from 'gsap';
   styleUrls: ['./mouse.component.scss'],
 })
 export class MouseComponent implements AfterViewInit {
+  @HostBinding('class.open') hasClass = false;
   isFirstMouseMove = true;
 
-  constructor(private elementRef: ElementRef) {
+  constructor(private elementRef: ElementRef, private ms: MouseService) {
     gsap.set(this.elementRef.nativeElement, {
       autoAlpha: 0,
     });
@@ -44,6 +51,14 @@ export class MouseComponent implements AfterViewInit {
         scale: 0,
         duration: 0.3,
       });
+    });
+
+    this.ms.status$.subscribe((status) => {
+      if (status === 'open') {
+        this.hasClass = true;
+      } else {
+        this.hasClass = false;
+      }
     });
   }
 }

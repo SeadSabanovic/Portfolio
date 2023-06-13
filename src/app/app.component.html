@@ -1,5 +1,3 @@
-<div [@routerFade]="getAnimationData(outlet)">
-  <router-outlet #outlet="outlet"></router-outlet>
-</div>
-<!-- <div class="mouse" @fade *ngIf="!isMobile"></div> -->
+<router-outlet #outlet="outlet"></router-outlet>
+
 <app-mouse *ngIf="!isMobile"></app-mouse>

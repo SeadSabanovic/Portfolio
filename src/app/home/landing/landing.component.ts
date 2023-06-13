@@ -9,7 +9,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 })
 export class LandingComponent implements AfterViewInit {
   @ViewChild('sky', { static: false }) skyEl!: ElementRef;
-  numberOfStars = 50;
+  numberOfStars = 15;
 
   constructor(private elRef: ElementRef) {}
 
