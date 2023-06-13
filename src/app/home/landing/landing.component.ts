@@ -9,7 +9,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 })
 export class LandingComponent implements AfterViewInit {
   @ViewChild('sky', { static: false }) skyEl!: ElementRef;
-  numberOfStars = 40;
+  numberOfStars = 50;
 
   constructor(private elRef: ElementRef) {}
 
@@ -28,18 +28,12 @@ export class LandingComponent implements AfterViewInit {
     const headline = document.querySelectorAll('.headline');
     const floor = document.querySelector('.floor');
 
-    // Headline Rotation
-    gsap.to(headline, {
-      rotate: 360,
-      duration: 20,
-      repeat: -1,
-      ease: 'none',
-    });
 
     gsap.to(headline, {
       top: '100%',
       scale: 0.4,
-      ease: 'none',
+      rotate: 360,
+      ease: 'power.3',
       scrollTrigger: {
         trigger: this.skyEl.nativeElement,
         start: 'center center',
@@ -122,10 +116,10 @@ export class LandingComponent implements AfterViewInit {
 
       this.skyEl.nativeElement.appendChild(star);
 
-      const delay = Math.floor(Math.random() * 7) + 1;
+      const delay = Math.floor(Math.random() * 4);
 
       gsap.to(star, {
-        duration: 2,
+        duration: 1,
         opacity: 0.5,
         scale: 0.5,
         delay: delay,

@@ -2,7 +2,7 @@
   <div class="projects__project" *ngFor="let project of projects">
     <div class="projects__project__wrap">
       <div class="projects__project__img">
-        <img [src]="project.src" alt="" />
+        <img [src]="project.src" alt="" loading="lazy" />
       </div>
       <div class="projects__project__wrap__inner">
         <h4 class="projects__project__title">{{ project.name }}</h4>

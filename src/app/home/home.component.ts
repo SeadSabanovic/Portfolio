@@ -80,8 +80,6 @@ export class HomeComponent implements AfterViewInit {
     },
   ];
 
-  constructor() {}
-
   ngAfterViewInit() {
     const skills = document.querySelectorAll('.skills .skills__skill');
     gsap.registerPlugin(ScrollTrigger);

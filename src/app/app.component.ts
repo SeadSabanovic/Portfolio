@@ -1,8 +1,8 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { fade } from './animations/fade';
 import { routerFade } from './animations/router';
-import { gsap } from 'gsap';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -10,27 +10,31 @@ import { gsap } from 'gsap';
   styleUrls: ['./app.component.scss'],
   animations: [fade, routerFade],
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  scroll: any;
-  isLoading = false;
+export class AppComponent implements OnInit {
+  titles = ['✋', 'SEAD SABANOVIC', 'PORTFOLIO', 'OPEN 2 WORK', '😇'];
+  currentIndex = 0;
+  isMobile = false;
 
-  ngOnInit(): void {}
+  constructor(private titleService: Title) {
+    const userAgent = navigator.userAgent;
+    this.isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        userAgent
+      );
+  }
 
-  ngAfterViewInit(): void {
-    const mouse = document.querySelector('.mouse'),
-      duration = 0.6,
-      xTo = gsap.quickTo(mouse, 'x', { duration: duration, ease: 'power3' }),
-      yTo = gsap.quickTo(mouse, 'y', { duration: duration, ease: 'power3' });
+  ngOnInit(): void {
+    this.changeTitle();
+  }
 
-    gsap.set(mouse, { xPercent: -50, yPercent: -50 });
-    gsap.to(mouse, {
-      opacity: 1,
-      duration: 2,
-    });
-    window.addEventListener('mousemove', (e: MouseEvent) => {
-      xTo(e.x);
-      yTo(e.y);
-    });
+  changeTitle() {
+    setInterval(() => {
+      this.titleService.setTitle(this.titles[this.currentIndex]);
+      this.currentIndex++;
+      if (this.currentIndex == this.titles.length) {
+        this.currentIndex = 0;
+      }
+    }, 1000);
   }
 
   getAnimationData(outlet: RouterOutlet) {

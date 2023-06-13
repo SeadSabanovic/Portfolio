@@ -10,6 +10,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export class ProjectsComponent implements AfterViewInit {
   projects = [
     {
+      name: 'Angular Beats',
+      src: 'assets/projects/baby.gif',
+      link: 'https://www.yuh.com/en',
+    },
+    {
       name: 'Yuh',
       src: 'assets/projects/yuh.png',
       link: 'https://www.yuh.com/en',
@@ -48,11 +53,6 @@ export class ProjectsComponent implements AfterViewInit {
       name: 'Saloopo',
       src: 'assets/projects/saloopo.avif',
       link: 'https://saloopo.com/',
-    },
-    {
-      name: 'Color-Clinic',
-      src: 'assets/projects/clinic.jpg',
-      link: 'https://color-clinic.com/',
     },
   ];
 
