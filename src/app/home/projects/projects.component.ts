@@ -11,8 +11,8 @@ export class ProjectsComponent implements AfterViewInit {
   projects = [
     {
       name: 'Angular Beats',
-      src: 'assets/projects/baby.gif',
-      link: 'https://www.yuh.com/en',
+      src: 'assets/projects/hasbi.gif',
+      link: 'https://angular-beats-22t7rawsm-seadsabanovic.vercel.app/',
     },
     {
       name: 'Yuh',
